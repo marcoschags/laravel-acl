@@ -1,0 +1,49 @@
+#Apache
+sudo apt-get install apache2
+sudo apt-get install python-software-properties
+sudo a2enmod rewrite
+
+sudo systemctl restart apache2
+
+#MySQL
+sudo apt-get install mysql-server
+sudo apt-get install phpmyadmin
+
+#PHP
+sudo apt-get install php7.0-cli libapache2-mod-php7.0 php7.0-mysql php7.0-curl php-memcached php7.0-dev php7.0-mcrypt php7.0-sqlite3 php7.0-mbstring php7.0-zip zip unzip
+
+#Verificar pacotes PHP
+sudo apt-cache search php7.0
+
+#Composer
+Linux
+https://getcomposer.org/
+https://getcomposer.org/download/
+https://getcomposer.org/doc/00-intro.md
+Windows
+https://getcomposer.org/
+https://getcomposer.org/download/
+
+
+#Laravel
+composer global require "laravel/installer"
+export PATH="$PATH:~/.composer/vendor/bin"
+source ~/.bashrc
+
+#Criar Projeto
+composer create-project --prefer-dist laravel/laravel laravel-acl
+composer create-project laravel/laravel laravel-acl --prefer-dist "5.3.*"
+cd laravel-acl
+sudo chmod -R 755 storage/
+
+#Aula 04 - Auth Laravel (Curso Laravel + ACL)
+php artisan make:auth
+php artisan make:model Notice -m
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('title', 200);
+            $table->text('description');
+            $table->timestamps();
+php artisan migrate
+
