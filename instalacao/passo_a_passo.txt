@@ -46,4 +46,5 @@ php artisan make:model Notice -m
             $table->text('description');
             $table->timestamps();
 php artisan migrate
+#Aula 05 - Cadastrando Posts e Listando (Curso Laravel + ACL)
 

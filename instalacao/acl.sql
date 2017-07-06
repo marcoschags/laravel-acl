@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.2
--- https://www.phpmyadmin.net/
+-- version 4.4.12
+-- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 05-Jul-2017 às 14:40
--- Versão do servidor: 5.7.18-log
--- PHP Version: 7.1.6
+-- Tempo de geração: 06/07/2017 às 19:30
+-- Versão do servidor: 5.6.25
+-- Versão do PHP: 5.6.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,23 +17,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `acl`
+-- Banco de dados: `acl`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `migrations`
+-- Estrutura para tabela `migrations`
 --
 
-CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) unsigned NOT NULL,
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Extraindo dados da tabela `migrations`
+-- Fazendo dump de dados para tabela `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -46,25 +44,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `notices`
+-- Estrutura para tabela `password_resets`
 --
 
-CREATE TABLE `notices` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `password_resets`
---
-
-CREATE TABLE `password_resets` (
+CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -73,21 +56,45 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Estrutura para tabela `posts`
 --
 
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `title` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Fazendo dump de dados para tabela `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `title`, `description`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Title Notice 1', 'Title Notice 1, Title Notice 1, Title Notice 1, Title Notice 1, Title Notice 1, Title Notice 1, Title Notice 1, Title Notice 1, Title Notice 1, Title Notice 1, Title Notice 1, Title Notice 1,', NULL, NULL),
+(2, 1, 'Title Notice 2', 'Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3, Title Notice 3,', NULL, NULL),
+(3, 2, 'Title Notice 3', 'Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33, Title Notice 33,', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(10) unsigned NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Extraindo dados da tabela `users`
+-- Fazendo dump de dados para tabela `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -95,65 +102,64 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 (2, 'User', 'marcoschags@gmail.com', '$2y$10$6YpszwZIazzACbrEXfNDV.Un9HQc2VB/i.wxFd/SmGQ4YNc.D1FIW', 'cEvxSh9rwOCrtGwsiqZDkfSO2QpaHvWh4BJosRMiKDe6PJCYfTifsBYt1f16', '2017-07-04 23:46:20', '2017-07-04 23:46:31');
 
 --
--- Indexes for dumped tables
+-- Índices de tabelas apagadas
 --
 
 --
--- Indexes for table `migrations`
+-- Índices de tabela `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `notices`
---
-ALTER TABLE `notices`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `notices_user_id_foreign` (`user_id`);
-
---
--- Indexes for table `password_resets`
+-- Índices de tabela `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`),
   ADD KEY `password_resets_token_index` (`token`);
 
 --
--- Indexes for table `users`
+-- Índices de tabela `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `notices_user_id_foreign` (`user_id`);
+
+--
+-- Índices de tabela `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT de tabela `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `notices`
+-- AUTO_INCREMENT de tabela `posts`
 --
-ALTER TABLE `notices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `posts`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
--- Constraints for dumped tables
+-- Restrições para dumps de tabelas
 --
 
 --
--- Limitadores para a tabela `notices`
+-- Restrições para tabelas `posts`
 --
-ALTER TABLE `notices`
+ALTER TABLE `posts`
   ADD CONSTRAINT `notices_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
