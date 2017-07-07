@@ -47,4 +47,12 @@ php artisan make:model Notice -m
             $table->timestamps();
 php artisan migrate
 #Aula 05 - Cadastrando Posts e Listando (Curso Laravel + ACL)
+Mudar de Notice para Post
 
+#Aula 06 - Iniciando ACL com Laravel
+HomeController
+//Autenticação e autorização do modo errado
+$posts = $post->where('user_id', auth()->user()->id)->get();
+
+//Autenticação e autorização do modo certo
+App->Providers->AuthServiceProvider.php
