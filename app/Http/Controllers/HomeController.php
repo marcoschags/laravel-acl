@@ -27,9 +27,10 @@ class HomeController extends Controller
      */
     public function index(Post $post)
     {
-        //$posts = $post->all();
+        $posts = $post->all();
         //Autenticação e autorização do modo errado
-        $posts = $post->where('user_id', auth()->user()->id)->get();
+        //$posts = $post->where('user_id', auth()->user()->id)->get();
+        
         return view('home', compact('posts'));
     }
 

@@ -56,3 +56,6 @@ $posts = $post->where('user_id', auth()->user()->id)->get();
 
 //Autenticação e autorização do modo certo
 App->Providers->AuthServiceProvider.php
+
+#07 - Laravel Acl na View (Curso Laravel com ACL)
+ACL na view
