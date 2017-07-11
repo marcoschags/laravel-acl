@@ -59,3 +59,10 @@ App->Providers->AuthServiceProvider.php
 
 #07 - Laravel Acl na View (Curso Laravel com ACL)
 ACL na view
+
+#Aula 08 - Definindo Políticas de Acesso ao Sistema (Curso Laravel com ACL)
+php artisan make:policy PostPolicy
+Registrar policy->AuthServiceProvider.php->
+ protected $policies = [
+        \App\Post::class => \App\Policies\PostPolicy::class,
+    ];
