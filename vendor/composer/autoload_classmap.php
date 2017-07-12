@@ -6,9 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateNoticesTable' => $baseDir . '/database/migrations/2017_07_04_050855_create_notices_table.php',
-    'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-    'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
+    'CreatePasswordResetsTable' => $baseDir . '/database/migrations/migradas/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePermissionRolesTable' => $baseDir . '/database/migrations/2017_07_12_125559_create_permission_roles_table.php',
+    'CreatePermissionsTable' => $baseDir . '/database/migrations/2017_07_12_122043_create_permissions_table.php',
+    'CreatePostsTable' => $baseDir . '/database/migrations/migradas/2017_07_04_050855_create_posts_table.php',
+    'CreateRoleUseresTable' => $baseDir . '/database/migrations/2017_07_12_125801_create_role_useres_table.php',
+    'CreateRoleUsersTable' => $baseDir . '/database/migrations/2017_07_12_130019_create_role_users_table.php',
+    'CreateRolesTable' => $baseDir . '/database/migrations/2017_07_12_121850_create_roles_table.php',
+    'CreateUsersTable' => $baseDir . '/database/migrations/migradas/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
